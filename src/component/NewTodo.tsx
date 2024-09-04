@@ -1,17 +1,15 @@
-import { useContext } from "react";
-import { TodosContext } from "../store/todos-context";
+import { FormEvent, useContext } from "react";
+import { TodoListContext } from "../store/todoList-context";
 
 const NewTodo = () => {
-  const { handleAddTodo } = useContext(TodosContext);
+  const { handleAddTodo } = useContext(TodoListContext);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const newTodo = formData.get("new-text");
+    const newTodo = formData.get("new-text")?.toString().trim() ?? ""
 
-    if (newTodo) {
-      handleAddTodo(String(newTodo));
-    }
+    handleAddTodo(newTodo)
   };
 
   return (

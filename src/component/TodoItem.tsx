@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { TodoListContext } from "../store/todoList-context";
+
 export interface todoDetail {
   id: string;
   text: string;
@@ -8,9 +11,13 @@ interface TodoItemProps {
 }
 
 const TodoItem = ({ todoItem }: TodoItemProps) => {
+  const { handleRemoveTodo } = useContext(TodoListContext);
+
   return (
-    <li>
-      <h3>{todoItem.text}</h3>
+    <li onClick={() => handleRemoveTodo(todoItem.id)}>
+      <div style={{backgroundColor: "gray"}}>
+        <h3>{todoItem.text}</h3>
+      </div>
     </li>
   );
 };

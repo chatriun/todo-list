@@ -1,13 +1,13 @@
 import NewTodo from './component/NewTodo';
 import TodoList from './component/Todos';
-import TodoProvider from './store/todos-context';
+import TodoListProvider from './store/todoList-context';
 
 const App = () => {
   return (
-    <TodoProvider>
+    <TodoListProvider>
       <NewTodo />
       <TodoList />
-    </TodoProvider>
+    </TodoListProvider>
   );
 }
 
